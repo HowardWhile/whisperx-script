@@ -1,4 +1,6 @@
 output/
+log/
+.gradio/
 
 # 🎬 影片檔案
 *.mp4

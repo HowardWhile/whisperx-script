@@ -8,7 +8,7 @@ LANGUAGE="zh"  # 預設語言為中文
 # 解析參數
 while [[ $# -gt 0 ]]; do
   case $1 in
-    -i)
+    -i|--input)
       INPUT_FILE="$2"
       shift 2
       ;;
@@ -16,9 +16,13 @@ while [[ $# -gt 0 ]]; do
       LANGUAGE="$2"
       shift 2
       ;;
+    -o|--output)
+      OUTPUT_DIR="$2"
+      shift 2
+      ;;
     *)
       echo "❌ 不支援的參數: $1"
-      echo "✅ 使用方式：./run_whisperx.sh -i <input_file> [-l en|jp|....|auto]"
+      echo "✅ 使用方式：./run_whisperx.sh -i <input_file> [-l en|jp|auto] [-o output_dir]"
       exit 1
       ;;
   esac
