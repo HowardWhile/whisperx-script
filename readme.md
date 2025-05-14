@@ -8,6 +8,8 @@ conda create -n whisperx python=3.10 -y
 conda activate whisperx
 ```
 
+**記得之後的操作都要使用conda切換環境到whisperx**
+
 **步驟二：使用 pip 安裝 WhisperX**
 
 ```shell
@@ -24,11 +26,10 @@ python -m whisperx
 python -c "import whisperx; print('WhisperX 安裝成功！')"
 ```
 
-
-
 簡易的轉檔測試
 
 ```shell
+conda activate whisperx
 whisperx input.mp3 \
   --model large-v2 \
   --chunk_size 6 \
@@ -61,6 +62,7 @@ echo 'export HF_TOKEN=hf_xxxxxxxxxxxxxxxxxxxxxx' >> ~/.bashrc
 語者分離的測試
 
 ```shell
+conda activate whisperx
 whisperx input.mp3 \
   --model large-v2 \
   --chunk_size 6 \
@@ -74,10 +76,28 @@ whisperx input.mp3 \
 
 
 
+**步驟四︰配置前端環境**
+
+```shell
+pip install gradio
+```
+
+
+
 ## 腳本使用
 
 ```shell
+conda activate whisperx
 # ./run_whisperx.sh -i <input_audio_file>
 ./run_whisperx.sh -i input.mp3
+```
+
+
+
+## 前端網頁使用
+
+```shell
+conda activate whisperx
+python app.py
 ```
 
