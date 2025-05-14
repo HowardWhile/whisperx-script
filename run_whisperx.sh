@@ -3,16 +3,22 @@
 # 預設參數
 INPUT_FILE=""
 OUTPUT_DIR="output"
+LANGUAGE="zh"  # 預設語言為中文
 
 # 解析參數
-while getopts "i:" opt; do
-  case ${opt} in
-    i )
-      INPUT_FILE=$OPTARG
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -i)
+      INPUT_FILE="$2"
+      shift 2
       ;;
-    \? )
-      echo "❌ 用法錯誤: 使用方法如下："
-      echo "  ./run_whisperx.sh -i <input_audio_file>"
+    -l|--language)
+      LANGUAGE="$2"
+      shift 2
+      ;;
+    *)
+      echo "❌ 不支援的參數: $1"
+      echo "✅ 使用方式：./run_whisperx.sh -i <input_file> [-l en|jp|....|auto]"
       exit 1
       ;;
   esac
@@ -52,16 +58,26 @@ if [ ! -d "$OUTPUT_DIR" ]; then
   mkdir -p "$OUTPUT_DIR"
 fi
 
+# 組合 whisperx 指令
+CMD=(whisperx "$INPUT_FILE"
+  --model large-v2
+  --chunk_size 6
+  -f all
+  --vad_method silero
+  --diarize
+  --hf_token "$HF_TOKEN"
+  --verbose True
+  --output_dir "$OUTPUT_DIR"
+)
+
+# 若不是 auto，加入語言參數
+if [ "$LANGUAGE" != "auto" ]; then
+  CMD+=(--language "$LANGUAGE")
+  echo "🌐 使用語言：$LANGUAGE"
+else
+  echo "🌐 語言自動偵測中..."
+fi
+
 # 執行 whisperx
 echo "🚀 開始處理檔案：$INPUT_FILE"
-whisperx "$INPUT_FILE" \
-  --model large-v2 \
-  --chunk_size 6 \
-  --language zh \
-  -f all \
-  --vad_method silero \
-  --diarize \
-  --hf_token "$HF_TOKEN" \
-  --verbose True \
-  --output_dir "$OUTPUT_DIR"
-
+"${CMD[@]}"
