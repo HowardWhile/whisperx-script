@@ -26,7 +26,7 @@ python -m whisperx
 python -c "import whisperx; print('WhisperX 安裝成功！')"
 ```
 
-簡易的轉檔測試
+測試STT
 
 ```shell
 conda activate whisperx
@@ -59,7 +59,7 @@ echo 'export HF_TOKEN=hf_xxxxxxxxxxxxxxxxxxxxxx' >> ~/.bashrc
 
 
 
-語者分離的測試
+語者分離測試
 
 ```shell
 conda activate whisperx
@@ -76,15 +76,9 @@ whisperx input.mp3 \
 
 
 
-**步驟四︰配置前端環境**
+## 指令使用範例
 
-```shell
-pip install gradio
-```
-
-
-
-## 腳本使用
+使用前須先完成**初始化環境**的`簡易的轉檔測試`與`語者分離測試`
 
 ```shell
 conda activate whisperx
@@ -94,7 +88,22 @@ conda activate whisperx
 
 
 
-## 前端網頁使用
+## 使用前端網頁
+
+使用前須先確認**使用腳本**
+
+
+
+**配置前端環境**
+
+```shell
+conda activate whisperx
+pip install gradio
+```
+
+
+
+**執行app**
 
 ```shell
 conda activate whisperx
