@@ -35,7 +35,7 @@ def transcribe(video_file, language):
     try:
         subprocess.run(command, check=True)
     except subprocess.CalledProcessError as e:
-        return f"❌ 執行失敗: {e}", None
+        return f"❌ 執行失敗: {e}", None, None
 
     # 將 output_dir 壓縮
     zip_path = os.path.join("log", job_id, f"{input_name_no_ext}.zip")
@@ -91,6 +91,7 @@ def main():
         inbrowser=args.show_browser,
         server_port=args.port, 
         server_name="0.0.0.0",
+        share=args.share,
         )
     
     pass

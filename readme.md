@@ -110,3 +110,26 @@ conda activate whisperx
 python app.py
 ```
 
+
+
+## 使用系統服務管理
+
+安裝服務
+
+```shell
+cd service_script/
+./install_whisperx_service.sh
+```
+
+### 📦 服務管理指令整理：
+
+| 指令                              | 功能             |
+| --------------------------------- | ---------------- |
+| `sudo systemctl status whisperx`  | 查看服務狀態     |
+| `sudo systemctl restart whisperx` | 重啟服務         |
+| `sudo systemctl stop whisperx`    | 停止服務         |
+| `sudo systemctl enable whisperx`  | 設為開機自動啟動 |
+|                                   |                  |
+
+
+
