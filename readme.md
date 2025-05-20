@@ -76,7 +76,7 @@ whisperx input.mp3 \
 
 
 
-## 指令使用範例
+## 使用命令列
 
 使用前須先完成**初始化環境**的`簡易的轉檔測試`與`語者分離測試`
 
@@ -90,9 +90,9 @@ conda activate whisperx
 
 ## 使用前端網頁
 
+![image-20250520105748616](./pic/readme/image-20250520105748616.png)
+
 使用前須先確認**使用腳本**
-
-
 
 **配置前端環境**
 
@@ -100,8 +100,6 @@ conda activate whisperx
 conda activate whisperx
 pip install gradio
 ```
-
-
 
 **執行app**
 

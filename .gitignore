@@ -2,6 +2,7 @@ __pycache__/
 output/
 log/
 .gradio/
+.vscode/
 
 
 # 🎬 影片檔案
